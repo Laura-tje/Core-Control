@@ -1,26 +1,27 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CableMG : MonoBehaviour
 {
     [SerializeField] private LineRenderer cable;
-
     [SerializeField] private Vector3 startPoint;
+
+    private bool isConnected;
 
     private void Start()
     {
         startPoint = transform.position;
+
         if (cable == null)
-        {
             cable = GetComponent<LineRenderer>();
-            cable.SetPosition(0, startPoint);
-            cable.SetPosition(1, startPoint);
-        }
+
+        cable.SetPosition(0, startPoint);
+        cable.SetPosition(1, startPoint);
     }
 
     private void OnMouseDrag()
     {
+        if (isConnected) return;
+
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         newPos.z = 0f;
 
@@ -31,6 +32,11 @@ public class CableMG : MonoBehaviour
             if (collider.gameObject != gameObject)
             {
                 SetCablePosition(collider.transform.position);
+
+                if (transform.parent == collider.transform.parent)
+                {
+                    isConnected = true;
+                }
                 return;
             }
         }
@@ -40,6 +46,7 @@ public class CableMG : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (isConnected) return;
         SetCablePosition(startPoint);
     }
 

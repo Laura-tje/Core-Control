@@ -4,7 +4,7 @@ using Unity.Mathematics;
 
 public class PressureGauge : MonoBehaviour
 {
-    [SerializeField] private float timer;
+    [SerializeField] private float timer; //0-50 is groen, 50-80 is oranje, 80-100 is rood
     [SerializeField] private GameObject gauge;
     [SerializeField] private float gaugeRotation;
     public GameObject[] features; //put the switches and stuff in here
@@ -13,13 +13,16 @@ public class PressureGauge : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        timer = 100;
+        timer = 0; //0-50 is groen, 50-80 is oranje, 80-100 is rood
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer += Time.deltaTime;
+        gaugeRotation = -timer * 1.8f;
+        
+        gauge.transform.rotation = Quaternion.Euler(0, 0, (gaugeRotation + 90));
     }
 
     private int lookForNewProblem() //returned number from features array om nieuw probleem te zoeken, trust the process

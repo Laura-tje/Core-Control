@@ -14,7 +14,10 @@ public class ButtonGame : MonoBehaviour
     [SerializeField] private int ButtonsPressed = 0;
     [SerializeField] private int ButtonsToPress = 10;
 
-    [SerializeField] private bool GameStart = true;
+    [SerializeField] private bool GameStart = false;
+    
+    [SerializeField] PressureGauge PressureGauge;
+    [SerializeField] private float Severity = 4f;
 
     private void Start()
     {
@@ -34,6 +37,7 @@ public class ButtonGame : MonoBehaviour
                 GameStart = false;
                 TimePassed = 0f;
                 TimeToWait = Random.Range(30f, 120f);
+                PressureGauge.timeIncrease -= Severity;
             }
             else
             {
@@ -44,6 +48,7 @@ public class ButtonGame : MonoBehaviour
         {
             GameStart = true;
             ButtonsPressed = 0;
+            PressureGauge.timeIncrease += Severity;
         }
         
     }

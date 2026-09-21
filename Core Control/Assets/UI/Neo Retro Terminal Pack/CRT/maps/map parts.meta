@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/CRT/maps/map parts.meta
 guid: 1070fa00b82abff4ca5c3e0c7fa4167e
+=======
+guid: c87cc35b54cec0e429a3f4bce48b24f7
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/CRT/maps/map parts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/CRT.meta
 guid: 66432e8623bb5914cb084c20693a2a27
+=======
+guid: 62b993024c272de47bb5787eb71c1b9f
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/CRT.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

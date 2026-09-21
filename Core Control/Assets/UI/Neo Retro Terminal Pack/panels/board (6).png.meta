@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/panels/board (6).png.meta
 guid: affd4089b9eb7294e8708edb16fd8a20
+=======
+guid: 8df22713098f26b41b2d15f0a1ab2996
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/panels/board (6).png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -96,6 +100,35 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/panels/board (6).png.meta
+=======
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/panels/board (6).png.meta
   spriteSheet:
     serializedVersion: 2
     sprites:

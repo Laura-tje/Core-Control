@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
 guid: c3541f3b724efb14b9d5b343152a1e09
+=======
+guid: c5f0e59c67a9d0c4bb6d7c742f680fec
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,7 +50,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,6 +104,35 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
+=======
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -103,12 +140,21 @@ TextureImporter:
       name: misc (4)_0
       rect:
         serializedVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
         x: 18
         y: 0
         width: 131
         height: 306
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+        x: 51
+        y: 138
+        width: 508
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -121,6 +167,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
     - serializedVersion: 2
       name: misc (4)_1
       rect:
@@ -187,11 +234,17 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
     outline: []
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
     spriteID: 5e97eb03825dee720800000000000000
+=======
+    spriteID: 
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
     internalID: 0
     vertices: []
     indices: 
@@ -202,9 +255,12 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       misc (4)_0: -8584187597105175616
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (4).png.meta
       misc (4)_1: 55586814
       misc (4)_2: 822991960
       misc (4)_3: 319888488
+=======
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (4).png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

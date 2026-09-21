@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/UI/cursors.meta
 guid: 530b15d61b616ef45b51ccf9c7bfa3c9
+=======
+guid: 9683e5122b9e2224ea33b27c1fdc36ef
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/UI/cursors.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

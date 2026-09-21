@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/CRT/maps/map parts/map_part (8).png.meta
 guid: 837db09a042c0784dbf6d651397f2d57
+=======
+guid: a1f809bcad6a87441a851217e46da12a
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/CRT/maps/map parts/map_part (8).png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -96,6 +100,35 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/CRT/maps/map parts/map_part (8).png.meta
+=======
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/CRT/maps/map parts/map_part (8).png.meta
   spriteSheet:
     serializedVersion: 2
     sprites:

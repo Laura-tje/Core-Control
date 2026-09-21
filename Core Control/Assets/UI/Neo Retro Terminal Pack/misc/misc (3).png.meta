@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (3).png.meta
 guid: 622d3a23a7c392649ab00e79c1aba117
+=======
+guid: 493fd9a4b65a5a5459b9e9df117d40f4
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (3).png.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,7 +50,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (3).png.meta
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (3).png.meta
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,6 +104,35 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (3).png.meta
+=======
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (3).png.meta
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -125,7 +162,11 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/misc/misc (3).png.meta
     spriteID: 5e97eb03825dee720800000000000000
+=======
+    spriteID: 
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/misc/misc (3).png.meta
     internalID: 0
     vertices: []
     indices: 

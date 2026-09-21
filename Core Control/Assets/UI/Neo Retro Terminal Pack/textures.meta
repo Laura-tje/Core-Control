@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Core Control/Assets/UI/Neo Retro Terminal Pack/textures.meta
 guid: 398947b9a3eb1df45b52c085fdf91ec3
+=======
+guid: cb5bc565242e6f147841c2222f5e6790
+>>>>>>> main:Core Control/Assets/Neo Retro Terminal Pack/textures.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

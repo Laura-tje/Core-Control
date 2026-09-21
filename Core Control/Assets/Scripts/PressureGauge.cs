@@ -14,6 +14,8 @@ public class PressureGauge : MonoBehaviour
     public float timeIncrease = 0; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
     public GameObject[] features; //put the switches and stuff in here
 
+    [SerializeField] private GameObject BrokenGlass;
+
     private float startingRotation = 145f;
 
 
@@ -22,6 +24,8 @@ public class PressureGauge : MonoBehaviour
         timer = 0;
 
         startingRotation = gauge.transform.localEulerAngles.z;
+        
+        BrokenGlass.SetActive(false);
     }
 
     void Update()
@@ -56,5 +60,6 @@ public class PressureGauge : MonoBehaviour
     private void Explode()
     {
         Debug.Log("Explode, you died :( !");
+        BrokenGlass.SetActive(true);
     }
 }

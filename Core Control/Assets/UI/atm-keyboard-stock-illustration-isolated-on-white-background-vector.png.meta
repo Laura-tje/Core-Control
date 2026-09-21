@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: fecae2d474160994db51c4eafdb10612
+guid: 0375a7659c6e6f3479e14abc4462bc67
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5688665104756582967
-    second: rectangle-toggle-power-switches-22507233-removebg-preview_0
-  - first:
-      213: 415836281710176014
-    second: rectangle-toggle-power-switches-22507233-removebg-preview_1
-  - first:
-      213: 2783828685341256412
-    second: rectangle-toggle-power-switches-22507233-removebg-preview_2
-  - first:
-      213: 606826827553959919
-    second: rectangle-toggle-power-switches-22507233-removebg-preview_3
+      213: -5969200412021027253
+    second: atm-keyboard-stock-illustration-isolated-on-white-background-vector_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rectangle-toggle-power-switches-22507233-removebg-preview_0
+      name: atm-keyboard-stock-illustration-isolated-on-white-background-vector_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 299
-        width: 172
-        height: 258
+        x: 0
+        y: 0
+        width: 337
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c5d2d02a3dcd01b0800000000000000
-      internalID: -5688665104756582967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rectangle-toggle-power-switches-22507233-removebg-preview_1
-      rect:
-        serializedVersion: 2
-        x: 229
-        y: 299
-        width: 172
-        height: 258
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e07ed0025e855c500800000000000000
-      internalID: 415836281710176014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rectangle-toggle-power-switches-22507233-removebg-preview_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 19
-        width: 172
-        height: 258
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cdaee41a07522a620800000000000000
-      internalID: 2783828685341256412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rectangle-toggle-power-switches-22507233-removebg-preview_3
-      rect:
-        serializedVersion: 2
-        x: 229
-        y: 19
-        width: 172
-        height: 258
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fefe788d8c1eb6800800000000000000
-      internalID: 606826827553959919
+      spriteID: b4e0f58f9d3292da0800000000000000
+      internalID: -5969200412021027253
       vertices: []
       indices: 
       edges: []
@@ -200,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rectangle-toggle-power-switches-22507233-removebg-preview_0: -5688665104756582967
-      rectangle-toggle-power-switches-22507233-removebg-preview_1: 415836281710176014
-      rectangle-toggle-power-switches-22507233-removebg-preview_2: 2783828685341256412
-      rectangle-toggle-power-switches-22507233-removebg-preview_3: 606826827553959919
+      atm-keyboard-stock-illustration-isolated-on-white-background-vector_0: -5969200412021027253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

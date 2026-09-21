@@ -47,6 +47,9 @@ public class PressureGauge : MonoBehaviour
         if (timer >= 100)
         {
             Explode();
+        } else if (timer <= 0)
+        {
+            timer = 0;
         }
     }
 

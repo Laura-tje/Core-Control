@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CableMG : MonoBehaviour
@@ -22,6 +23,17 @@ public class CableMG : MonoBehaviour
     {
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         newPos.z = 0f;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(newPos, .2f);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject != gameObject)
+            {
+                SetCablePosition(collider.transform.position);
+                return;
+            }
+        }
 
         SetCablePosition(newPos);
     }

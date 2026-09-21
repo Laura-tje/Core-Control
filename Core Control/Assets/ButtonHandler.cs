@@ -3,7 +3,7 @@ using UnityEngine;
 public class ButtonHandler : MonoBehaviour
 {
 
-    [SerializeField] private bool ButtonOn = false;
+    [SerializeField] public bool ButtonOn = true;
     [SerializeField] private GameObject ButtonGreen;
 
     public void ToggleButton()

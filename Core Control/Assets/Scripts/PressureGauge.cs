@@ -19,8 +19,17 @@ public class PressureGauge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        
         gaugeRotation = -timer * 1.8f;
+
+        if (timer >= 100)
+        {
+            Explode();
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
         
         gauge.transform.rotation = Quaternion.Euler(0, 0, (gaugeRotation + 90));
     }
@@ -28,5 +37,10 @@ public class PressureGauge : MonoBehaviour
     private int lookForNewProblem() //returned number from features array om nieuw probleem te zoeken, trust the process
     {
         return UnityEngine.Random.Range(0,features.Length);
+    }
+
+    private void Explode()
+    {
+        Debug.Log("Explode, you died :( !");
     }
 }

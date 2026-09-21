@@ -11,7 +11,7 @@ public class PressureGauge : MonoBehaviour
     [SerializeField] private float gaugeMin;
     [SerializeField] private float gaugeMax;
 
-    public float timeIncrease = 1; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
+    public float timeIncrease = 0; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
     public GameObject[] features; //put the switches and stuff in here
 
     private float startingRotation = 145f;
@@ -36,16 +36,17 @@ public class PressureGauge : MonoBehaviour
 
         if (timeIncrease <= 0)
         {
-            timeIncrease = 1;
+            timeIncrease = 0;
+            timer -= Time.deltaTime;
+            
+        } else if (timeIncrease > 0)
+        {
+            timer += timeIncrease * Time.deltaTime;
         }
 
         if (timer >= 100)
         {
             Explode();
-        }
-        else
-        {
-            timer += timeIncrease * Time.deltaTime;
         }
     }
 

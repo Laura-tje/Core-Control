@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class CableMG : MonoBehaviour
+public class Cable : MonoBehaviour
 {
     [SerializeField] private LineRenderer cable;
     [SerializeField] private Vector3 startPoint;
 
-    private bool isConnected;
+    public bool isConnected { get; private set; }
+    public bool isBroken { get; private set; }
 
     private void Start()
     {
@@ -36,6 +37,10 @@ public class CableMG : MonoBehaviour
                 if (transform.parent == collider.transform.parent)
                 {
                     isConnected = true;
+                    isBroken = false;
+
+                    if (CableManager.Instance != null)
+                        CableManager.Instance.CableConnected(this);
                 }
                 return;
             }
@@ -57,5 +62,12 @@ public class CableMG : MonoBehaviour
             cable.SetPosition(0, startPoint);
             cable.SetPosition(1, newPos);
         }
+    }
+
+    public void Break()
+    {
+        isConnected = false;
+        isBroken = true;
+        SetCablePosition(startPoint);
     }
 }

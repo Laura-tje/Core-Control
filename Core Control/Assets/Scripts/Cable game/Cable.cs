@@ -70,4 +70,11 @@ public class Cable : MonoBehaviour
         isBroken = true;
         SetCablePosition(startPoint);
     }
+
+    public void Connect(Vector3 targetPosition)
+    {
+        isConnected = true;
+        isBroken = false;
+        SetCablePosition(targetPosition);
+    }
 }

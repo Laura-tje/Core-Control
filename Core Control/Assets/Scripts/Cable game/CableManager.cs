@@ -36,15 +36,38 @@ public class CableManager : MonoBehaviour
     {
         RandomizeEndPositions();
         cables = GetComponentsInChildren<Cable>();
-        breakRoutine = StartCoroutine(BreakRoutine());
 
         if (pressureGauge == null)
         {
             pressureGauge = FindAnyObjectByType<PressureGauge>();
         }
-        
+
         minigameActive = true;
         pressureGauge.timeIncrease += severity;
+
+        ConnectAllCables();
+
+        breakRoutine = StartCoroutine(BreakRoutine());
+    }
+
+    private void ConnectAllCables()
+    {
+        foreach (Cable cable in cables)
+        {
+            Transform parent = cable.transform.parent;
+            if (parent == null) continue;
+
+            foreach (Transform sibling in parent)
+            {
+                if (sibling == cable.transform) continue;
+
+                cable.Connect(sibling.position);
+                break;
+            }
+        }
+
+        UpdateBrokenCount();
+        CheckAllConnected();
     }
 
     private void RandomizeEndPositions()

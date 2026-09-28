@@ -17,6 +17,6 @@ public class Fingerprintgame : MonoBehaviour
 
     public void buttonClicked()
     {
-        Debug.Log("buttonClicked");
+        
     }
 }

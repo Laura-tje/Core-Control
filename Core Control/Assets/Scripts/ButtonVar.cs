@@ -25,9 +25,13 @@ public class ButtonVar : MonoBehaviour
             randomColor.GetComponent<ShuffleColor>().UpdateColor();
             numPadGame.ShuffleColors();
         }
-        else
+        else if (Color != randomColor.sprite)
         {
             Debug.Log("Incorrect");
+        }
+        else
+        {
+                       Debug.Log("Error");
         }
     }
 }

@@ -20,6 +20,7 @@ public class LedIndicator : MonoBehaviour
 
     public bool correct;
 
+    
     private void Update()
     {
         timer += Time.deltaTime;
@@ -37,8 +38,6 @@ public class LedIndicator : MonoBehaviour
             timer = 0f;
             timeToWait = Random.Range(minTime, maxTime);
             open = !open; 
-            //presure gadge increasres
-            PressureGauge.Instance.timeIncrease += 1f;
         }
     }
     private void SetLight()

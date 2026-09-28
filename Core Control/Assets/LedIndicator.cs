@@ -26,10 +26,7 @@ public class LedIndicator : MonoBehaviour
         SetLight();
         SetMiniGame();
 
-
-        
         // Gefixed
-        PressureGauge.Instance.timeIncrease -= 1f;
 
     }
 

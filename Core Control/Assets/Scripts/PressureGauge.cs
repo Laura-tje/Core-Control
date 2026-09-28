@@ -29,3 +29,60 @@ public class PressureGauge : MonoBehaviour
         }
 
         Instance = this;
+        // DontDestroyOnLoad(gameObject); // Haal de // weg als de gauge over scenes heen moet blijven bestaan
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
+
+    void Start()
+    {
+        timer = 0;
+
+        startingRotation = gauge.transform.localEulerAngles.z;
+
+        BrokenGlass.SetActive(false);
+    }
+
+    void Update()
+    {
+        gaugeRotation = Mathf.Lerp(gaugeMin, gaugeMax, timer / 100f);
+
+        gauge.transform.localRotation = Quaternion.Euler(
+            0,
+            0,
+            startingRotation + gaugeRotation
+        );
+
+        if (timeIncrease <= 0)
+        {
+            timeIncrease = 0;
+            timer -= Time.deltaTime;
+
+        }
+        else if (timeIncrease > 0)
+        {
+            timer += timeIncrease * Time.deltaTime;
+        }
+
+        if (timer >= 100)
+        {
+            Explode();
+        }
+        else if (timer <= 0)
+        {
+            timer = 0;
+        }
+    }
+
+    private void Explode()
+    {
+        Debug.Log("Explode, you died :( !");
+        BrokenGlass.SetActive(true);
+    }
+}

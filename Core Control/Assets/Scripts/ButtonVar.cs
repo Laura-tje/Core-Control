@@ -6,6 +6,7 @@ public class ButtonVar : MonoBehaviour
     [SerializeField] public Sprite Color;
     private Image randomColor;
     NumPadGame numPadGame;
+    public static bool playing = true;
     private void Start()
     {
         randomColor = GameObject.Find("random color").GetComponent<Image>();
@@ -18,20 +19,18 @@ public class ButtonVar : MonoBehaviour
     }
 
     public void colorCheck()
-    {
-        if(Color == randomColor.sprite)
+    { if(!playing) return;
+        if (Color == randomColor.sprite)
         {
             Debug.Log("Correct");
             randomColor.GetComponent<ShuffleColor>().UpdateColor();
             numPadGame.ShuffleColors();
-        }
-        else if (Color != randomColor.sprite)
-        {
-            Debug.Log("Incorrect");
+            numPadGame.Amount++;
         }
         else
         {
-                       Debug.Log("Error");
+            Debug.Log("Incorrect");
         }
+
     }
 }

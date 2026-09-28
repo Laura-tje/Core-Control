@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class Slide : MonoBehaviour
     [SerializeField] private float targetSize = 30f;
     [SerializeField] private float minValue = 15f;
     [SerializeField] private float maxValue = 145f;
+    [SerializeField] private float moveDuration = 0.5f;
+
+    private Coroutine moveRoutine;
 
     public bool isCorrect { get; private set; }
     public bool isWrong { get; private set; }
@@ -37,9 +41,31 @@ public class Slide : MonoBehaviour
 
     private void SetNewTarget()
     {
-        Vector2 pos = target.anchoredPosition;
-        pos.y = Random.Range(minValue, maxValue);
-        target.anchoredPosition = pos;
+        float newY = Random.Range(minValue, maxValue);
+
+        if (moveRoutine != null)
+            StopCoroutine(moveRoutine);
+
+        moveRoutine = StartCoroutine(MoveTargetTo(newY));
+    }
+
+    private IEnumerator MoveTargetTo(float targetY)
+    {
+        Vector2 startPos = target.anchoredPosition;
+        Vector2 endPos = startPos;
+        endPos.y = targetY;
+
+        float elapsed = 0f;
+        while (elapsed < moveDuration)
+        {
+            elapsed += Time.deltaTime;
+            target.anchoredPosition = Vector2.Lerp(startPos, endPos, elapsed / moveDuration);
+            yield return null;
+        }
+
+        target.anchoredPosition = endPos;
+        moveRoutine = null;
+
         CheckCorrect(slider.value);
     }
 

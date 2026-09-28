@@ -9,36 +9,37 @@ public class LedIndicator : MonoBehaviour
     [SerializeField] Sprite red;
     [SerializeField] Image led;
 
+    public bool correct;
+
     private void Update()
     {
 
-        if (open)
+        if (open && fill.fillAmount > 0.8f)
         {
-            //if open
-            if (fill.fillAmount > 0.8f)
-            {
-                Debug.Log("LED is open");
-                led.sprite = green;
-            }
-            else
-            {
-                led.sprite = red;
-            }
+           True();
+
+        }
+        else if(!open && fill.fillAmount < 0.2f)
+        {
+            True();
         }
         else
         {
-            //if closed
-            if (fill.fillAmount < 0.2f)
-            {
-                Debug.Log("LED is closed");
-                led.sprite = green;
-            }
-            else
-            {
-                led.sprite = red;
-            }
+            False();
         }
         
         
+    }
+
+    private void True()
+    {
+        led.sprite = green;
+        correct = true;
+    }
+
+    private void False()
+    {
+        led.sprite = red;
+        correct = false;
     }
 }

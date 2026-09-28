@@ -17,6 +17,8 @@ public class NumPadGame : MonoBehaviour
     public float breakTime = 0.5f;
     public float timer = 0f;
 
+    bool SetGood = false;
+    bool SetBad = false;
 
 
     void Start()
@@ -32,9 +34,27 @@ public class NumPadGame : MonoBehaviour
 
         if(ButtonVar.playing == false && timer <= breakTime)
         {
+            if(SetGood == false)
+            {
+                PressureGauge.Instance.timeIncrease -= 1f;
+                SetGood = true;
+                SetBad = false;
+            }
             return;
         }
-        if(timer >= breakTime && ButtonVar.playing == false)
+        else
+        {
+            if(SetBad == false)
+            {
+                PressureGauge.Instance.timeIncrease += 1f;
+                SetBad = true;
+                SetGood = false;
+            }
+        }
+
+
+
+        if (timer >= breakTime && ButtonVar.playing == false)
         {
             Amount = 0;
             ButtonVar.playing = true;

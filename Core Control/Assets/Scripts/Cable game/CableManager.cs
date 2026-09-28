@@ -43,6 +43,7 @@ public class CableManager : MonoBehaviour
             pressureGauge = FindAnyObjectByType<PressureGauge>();
         }
         
+        minigameActive = true;
         pressureGauge.timeIncrease += severity;
     }
 

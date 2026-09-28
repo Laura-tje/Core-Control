@@ -4,6 +4,8 @@ using Unity.Mathematics;
 
 public class PressureGauge : MonoBehaviour
 {
+    public static PressureGauge Instance { get; private set; }
+
     [SerializeField] private float timer; //0-50 is groen, 50-80 is oranje, 80-100 is rood
     [SerializeField] private GameObject gauge;
     [SerializeField] private float gaugeRotation;
@@ -18,13 +20,32 @@ public class PressureGauge : MonoBehaviour
 
     private float startingRotation = 145f;
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        // DontDestroyOnLoad(gameObject); // Haal de // weg als de gauge over scenes heen moet blijven bestaan
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
     void Start()
     {
         timer = 0;
 
         startingRotation = gauge.transform.localEulerAngles.z;
-        
+
         BrokenGlass.SetActive(false);
     }
 
@@ -42,8 +63,9 @@ public class PressureGauge : MonoBehaviour
         {
             timeIncrease = 0;
             timer -= Time.deltaTime;
-            
-        } else if (timeIncrease > 0)
+
+        }
+        else if (timeIncrease > 0)
         {
             timer += timeIncrease * Time.deltaTime;
         }
@@ -51,7 +73,8 @@ public class PressureGauge : MonoBehaviour
         if (timer >= 100)
         {
             Explode();
-        } else if (timer <= 0)
+        }
+        else if (timer <= 0)
         {
             timer = 0;
         }

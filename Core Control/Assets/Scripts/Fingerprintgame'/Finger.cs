@@ -10,6 +10,10 @@ public class Finger : MonoBehaviour
     private Vector3 endposLine;
 
     private float timer = 0f;
+    private bool isProblem = false;
+
+    [SerializeField] private GameObject redLight;
+    [SerializeField] private GameObject greenLight;
 
     void Start()
     {
@@ -22,10 +26,16 @@ public class Finger : MonoBehaviour
         );
 
         line.SetActive(false);
+        redLight.SetActive(false);
+        greenLight.SetActive(true);
+        isProblem = true; ////////for testing
     }
 
     void Update()
     {
+        redLight.SetActive(isProblem);
+        greenLight.SetActive(!isProblem);
+        
         if (isHolding)
         {
             line.SetActive(true);
@@ -43,6 +53,11 @@ public class Finger : MonoBehaviour
         else
         {
             line.SetActive(false);
+        }
+
+        if (line.transform.position == endposLine)
+        {
+            isProblem = false;
         }
     }
 

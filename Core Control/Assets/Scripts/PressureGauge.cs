@@ -4,7 +4,7 @@ using Unity.Mathematics;
 
 public class PressureGauge : MonoBehaviour
 {
-    public static PressureGauge Instance { get; private set; }
+    public static PressureGauge Instance { get; set; }
 
     [SerializeField] private float timer; //0-50 is groen, 50-80 is oranje, 80-100 is rood
     [SerializeField] private GameObject gauge;

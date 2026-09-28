@@ -15,6 +15,9 @@ public class LedIndicator : MonoBehaviour
     [SerializeField] private float minTime = 10f;
     [SerializeField] private float maxTime = 30f;
 
+    bool SetGood = false;
+    bool SetBad = false;
+
     public bool correct;
 
     private void Update()
@@ -22,6 +25,11 @@ public class LedIndicator : MonoBehaviour
         timer += Time.deltaTime;
         SetLight();
         SetMiniGame();
+
+
+        
+        // Gefixed
+        PressureGauge.Instance.timeIncrease -= 1f;
 
     }
 
@@ -31,7 +39,9 @@ public class LedIndicator : MonoBehaviour
         {
             timer = 0f;
             timeToWait = Random.Range(minTime, maxTime);
-            open = !open;
+            open = !open; 
+            //presure gadge increasres
+            PressureGauge.Instance.timeIncrease += 1f;
         }
     }
     private void SetLight()
@@ -55,11 +65,24 @@ public class LedIndicator : MonoBehaviour
     {
         led.sprite = green;
         correct = true;
+        if(SetGood == false)
+        {
+            PressureGauge.Instance.timeIncrease -= 1f;
+            SetGood = true;
+            SetBad = false;
+        }
     }
 
     private void False()
     {
         led.sprite = red;
         correct = false;
+        if(SetBad == false)
+        {
+            PressureGauge.Instance.timeIncrease += 1f;
+            SetBad = true;
+            SetGood = false;
+        }
+        
     }
 }

@@ -17,7 +17,7 @@ public class ButtonGame : MonoBehaviour
     [SerializeField] private bool GameStart = false;
     
     [SerializeField] PressureGauge PressureGauge;
-    [SerializeField] private float Severity = 4f;
+    [SerializeField] private float Severity = 2f;
 
     private void Start()
     {

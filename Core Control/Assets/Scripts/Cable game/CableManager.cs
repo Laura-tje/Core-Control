@@ -13,6 +13,9 @@ public class CableManager : MonoBehaviour
     [SerializeField] private PressureGauge pressureGauge;
     [SerializeField] private float severity;
 
+    [SerializeField] private Transform[] cableEnds;
+    [SerializeField] private Transform[] endpointSlots;
+
     private Cable[] cables;
     private readonly List<Cable> brokenCables = new List<Cable>();
     private Coroutine breakRoutine;
@@ -31,8 +34,30 @@ public class CableManager : MonoBehaviour
 
     private void Start()
     {
+        RandomizeEndPositions();
         cables = GetComponentsInChildren<Cable>();
         breakRoutine = StartCoroutine(BreakRoutine());
+
+        if (pressureGauge == null)
+        {
+            pressureGauge = FindAnyObjectByType<PressureGauge>();
+        }
+    }
+
+    private void RandomizeEndPositions()
+    {
+        List<Vector3> positions = new List<Vector3>();
+        foreach (Transform slot in endpointSlots)
+            positions.Add(slot.position);
+
+        for (int i = positions.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (positions[i], positions[j]) = (positions[j], positions[i]);
+        }
+
+        for (int i = 0; i < cableEnds.Length; i++)
+            cableEnds[i].position = positions[i];
     }
 
     private IEnumerator BreakRoutine()

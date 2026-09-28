@@ -42,6 +42,8 @@ public class CableManager : MonoBehaviour
         {
             pressureGauge = FindAnyObjectByType<PressureGauge>();
         }
+        
+        pressureGauge.timeIncrease += severity;
     }
 
     private void RandomizeEndPositions()

@@ -4,6 +4,8 @@ using Unity.Mathematics;
 
 public class PressureGauge : MonoBehaviour
 {
+    public static PressureGauge Instance { get; private set; }
+
     [SerializeField] private float timer; //0-50 is groen, 50-80 is oranje, 80-100 is rood
     [SerializeField] private GameObject gauge;
     [SerializeField] private float gaugeRotation;
@@ -18,48 +20,12 @@ public class PressureGauge : MonoBehaviour
 
     private float startingRotation = 145f;
 
-
-    void Start()
+    void Awake()
     {
-        timer = 0;
-
-        startingRotation = gauge.transform.localEulerAngles.z;
-        
-        BrokenGlass.SetActive(false);
-    }
-
-    void Update()
-    {
-        gaugeRotation = Mathf.Lerp(gaugeMin, gaugeMax, timer / 100f);
-
-        gauge.transform.localRotation = Quaternion.Euler(
-            0,
-            0,
-            startingRotation + gaugeRotation
-        );
-
-        if (timeIncrease <= 0)
+        if (Instance != null && Instance != this)
         {
-            timeIncrease = 0;
-            timer -= Time.deltaTime;
-            
-        } else if (timeIncrease > 0)
-        {
-            timer += timeIncrease * Time.deltaTime;
+            Destroy(gameObject);
+            return;
         }
 
-        if (timer >= 100)
-        {
-            Explode();
-        } else if (timer <= 0)
-        {
-            timer = 0;
-        }
-    }
-
-    private void Explode()
-    {
-        Debug.Log("Explode, you died :( !");
-        BrokenGlass.SetActive(true);
-    }
-}
+        Instance = this;

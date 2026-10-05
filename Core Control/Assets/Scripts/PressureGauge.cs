@@ -88,7 +88,17 @@ public class PressureGauge : MonoBehaviour
 
         if (CheckForAmountProblems() < maxAmountOfProblems)
         {
-            IsProblem[FindNewProblem()] = true;
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer >= problemSpawnDelay)
+            {
+                spawnTimer = 0;
+                IsProblem[FindNewProblem()] = true;
+            }
+        }
+        else
+        {
+            spawnTimer = 0;
         }
         
         timeIncrease = CheckForAmountProblems();

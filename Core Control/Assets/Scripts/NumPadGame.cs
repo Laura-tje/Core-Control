@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NumPadGame : MonoBehaviour
+public class NumPadGame : MonoBehaviour, IGameInteractable
 {
     //1- randomly give every button a color and a number
     [SerializeField] List<Sprite> Colors;
@@ -14,39 +14,20 @@ public class NumPadGame : MonoBehaviour
     
     public int AmountOfButtons = 9;
     public int Amount = 0;
-    public float breakTime = 0.5f;
-    public float timer = 0f;
 
     bool SetGood = false;
     bool SetBad = false;
 
 
-    void Start()
-    {
-        ShuffleColors();
-        if(ButtonVar.playing == false)
-        {
-            ButtonVar.playing = true;
-        }
-    }
+    
 
 
     void Update()
     {
-        timer += Time.deltaTime;
+        
 
-        if(ButtonVar.playing == false && timer <= breakTime)
-        {
-            if(SetGood == false)
-            {
-                //PressureGauge.Instance.timeIncrease -= 1f;
-                SetGood = true;
-                SetBad = false;
-            }
-            return;
-        }
-        else
-        {
+        if (ButtonVar.playing == true) {
+        
             if(SetBad == false)
             {
                 //PressureGauge.Instance.timeIncrease += 1f;
@@ -56,18 +37,9 @@ public class NumPadGame : MonoBehaviour
         }
 
 
-
-        if (timer >= breakTime && ButtonVar.playing == false)
+       if (Amount == AmountOfButtons)
         {
-            Amount = 0;
-            ButtonVar.playing = true;
-            timer = 0f;
-            ButtonVar.playing = true;
-            TurnOnToPlay.SetActive(true);
-        }
-        else if (Amount == AmountOfButtons)
-        {
-            timer = 0f;
+            
             Debug.Log("You Win!");
             ButtonVar.playing = false;
             TurnOnToPlay.SetActive(false);
@@ -91,6 +63,20 @@ public class NumPadGame : MonoBehaviour
             //set the color of the number to the color in the shuffled list
             Numbers[i].gameObject.GetComponent<UnityEngine.UI.Image>().sprite = Colors[i];
             
+        }
+    }
+
+    public void ActivateGame()
+    {
+        Amount = 0;
+        ButtonVar.playing = true;
+        TurnOnToPlay.SetActive(true);
+        ShuffleColors();
+        if (SetGood == false)
+        {
+            //PressureGauge.Instance.timeIncrease -= 1f;
+            SetGood = true;
+            SetBad = false;
         }
     }
 }

@@ -6,12 +6,18 @@ public class ButtonVar : MonoBehaviour
     [SerializeField] public Sprite Color;
     private Image randomColor;
     NumPadGame numPadGame;
-    public static bool playing = true;
-    private void Start()
+    public static bool playing = false;
+    private void Awake()
     {
         randomColor = GameObject.Find("random color").GetComponent<Image>();
         numPadGame = GameObject.Find("NumPadGame").GetComponent<NumPadGame>();
+    
     }
+    private void Start()
+    {
+        randomColor.gameObject.SetActive(false);
+    }
+    
 
     private void Update()
     {

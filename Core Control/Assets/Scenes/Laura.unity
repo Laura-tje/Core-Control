@@ -1510,6 +1510,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4935015644083904129, guid: e938fddc1ebae2f438c09e7e490d3f3b, type: 3}
+      propertyPath: TimeToWait
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935015644083904129, guid: e938fddc1ebae2f438c09e7e490d3f3b, type: 3}
       propertyPath: PressureGauge
       value: 
       objectReference: {fileID: 3559610768425151934}

@@ -24,7 +24,10 @@ public class NumPadGame : MonoBehaviour
     void Start()
     {
         ShuffleColors();
-        
+        if(ButtonVar.playing == false)
+        {
+            ButtonVar.playing = true;
+        }
     }
 
 

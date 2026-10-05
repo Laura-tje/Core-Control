@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
+using System.Collections;
+
 
 public class PressureGauge : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class PressureGauge : MonoBehaviour
     [SerializeField] private GameObject BrokenGlass;
 
     private float startingRotation = 145f;
+
+    public bool[] IsProblem;
+    public GameObject[] Games;
 
     void Awake()
     {
@@ -84,7 +89,8 @@ public class PressureGauge : MonoBehaviour
     private void Explode()
     {
         Debug.Log("Explode, you died :( !");
-        BrokenGlass.SetActive(true);
-        SceneManager.LoadScene(1);
+        BrokenGlass.SetActive(true); 
     }
+    
+    //SceneManager.LoadScene("Scenes/Laura");
 }

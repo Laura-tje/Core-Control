@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 
 public class PressureGauge : MonoBehaviour
@@ -84,5 +85,6 @@ public class PressureGauge : MonoBehaviour
     {
         Debug.Log("Explode, you died :( !");
         BrokenGlass.SetActive(true);
+        SceneManager.LoadScene(1);
     }
 }

@@ -37,7 +37,7 @@ public class ButtonGame : MonoBehaviour
                 GameStart = false;
                 TimePassed = 0f;
                 TimeToWait = Random.Range(30f, 120f);
-                PressureGauge.timeIncrease -= Severity;
+                //PressureGauge.timeIncrease -= Severity;
             }
             else
             {
@@ -48,7 +48,7 @@ public class ButtonGame : MonoBehaviour
         {
             GameStart = true;
             ButtonsPressed = 0;
-            PressureGauge.timeIncrease += Severity;
+            //PressureGauge.timeIncrease += Severity;
         }
         
     }

@@ -10,8 +10,6 @@ public class CableManager : MonoBehaviour
 
     [SerializeField] private float minBreakInterval = 3f;
     [SerializeField] private float maxBreakInterval = 8f;
-    [SerializeField] private PressureGauge pressureGauge;
-    [SerializeField] private float severity;
 
     [SerializeField] private Transform[] cableEnds;
     [SerializeField] private Transform[] endpointSlots;
@@ -37,13 +35,7 @@ public class CableManager : MonoBehaviour
         RandomizeEndPositions();
         cables = GetComponentsInChildren<Cable>();
 
-        if (pressureGauge == null)
-        {
-            pressureGauge = FindAnyObjectByType<PressureGauge>();
-        }
-
         minigameActive = true;
-        pressureGauge.timeIncrease += severity;
 
         ConnectAllCables();
 
@@ -112,7 +104,6 @@ public class CableManager : MonoBehaviour
         if (!minigameActive)
         {
             minigameActive = true;
-            pressureGauge.timeIncrease += severity;
         }
 
         UpdateBrokenCount();
@@ -146,7 +137,6 @@ public class CableManager : MonoBehaviour
         if (minigameActive)
         {
             minigameActive = false;
-            pressureGauge.timeIncrease -= severity;
         }
     }
 

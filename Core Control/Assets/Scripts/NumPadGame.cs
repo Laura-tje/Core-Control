@@ -39,7 +39,7 @@ public class NumPadGame : MonoBehaviour
         {
             if(SetGood == false)
             {
-                PressureGauge.Instance.timeIncrease -= 1f;
+                //PressureGauge.Instance.timeIncrease -= 1f;
                 SetGood = true;
                 SetBad = false;
             }
@@ -49,7 +49,7 @@ public class NumPadGame : MonoBehaviour
         {
             if(SetBad == false)
             {
-                PressureGauge.Instance.timeIncrease += 1f;
+                //PressureGauge.Instance.timeIncrease += 1f;
                 SetBad = true;
                 SetGood = false;
             }

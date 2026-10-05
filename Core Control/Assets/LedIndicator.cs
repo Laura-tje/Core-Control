@@ -63,7 +63,7 @@ public class LedIndicator : MonoBehaviour
         correct = true;
         if(SetGood == false)
         {
-            PressureGauge.Instance.timeIncrease -= 1f;
+            //PressureGauge.Instance.timeIncrease -= 1f;
             SetGood = true;
             SetBad = false;
         }
@@ -75,7 +75,7 @@ public class LedIndicator : MonoBehaviour
         correct = false;
         if(SetBad == false)
         {
-            PressureGauge.Instance.timeIncrease += 1f;
+            //PressureGauge.Instance.timeIncrease += 1f;
             SetBad = true;
             SetGood = false;
         }

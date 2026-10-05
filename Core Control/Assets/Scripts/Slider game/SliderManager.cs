@@ -39,7 +39,7 @@ public class SliderManager : MonoBehaviour
         }
 
         minigameActive = true;
-        pressureGauge.timeIncrease += severity;
+        //pressureGauge.timeIncrease += severity;
     }
 
     private IEnumerator BreakRoutine()
@@ -68,7 +68,7 @@ public class SliderManager : MonoBehaviour
         if (!minigameActive)
         {
             minigameActive = true;
-            pressureGauge.timeIncrease += severity;
+            //pressureGauge.timeIncrease += severity;
         }
 
         UpdateBrokenCount();
@@ -102,7 +102,7 @@ public class SliderManager : MonoBehaviour
         if (minigameActive)
         {
             minigameActive = false;
-            pressureGauge.timeIncrease -= severity;
+            //pressureGauge.timeIncrease -= severity;
         }
     }
 

@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 423878522637361779, guid: 766227128288c0f4580f04bac87ced2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9151701876338477098, guid: 766227128288c0f4580f04bac87ced2b, type: 3}
       propertyPath: m_Pivot.x
@@ -532,6 +532,10 @@ PrefabInstance:
     - target: {fileID: 3519918765508200878, guid: 70cfca466f664114fa627834806e59d1, type: 3}
       propertyPath: m_Name
       value: Turn Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519918765508200878, guid: 70cfca466f664114fa627834806e59d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

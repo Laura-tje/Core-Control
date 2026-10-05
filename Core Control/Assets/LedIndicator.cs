@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LedIndicator : MonoBehaviour
+public class LedIndicator : MonoBehaviour, IGameInteractable
 {
     [SerializeField] bool open = true;
     [SerializeField] Image fill;
@@ -9,11 +9,6 @@ public class LedIndicator : MonoBehaviour
     [SerializeField] Sprite red;
     [SerializeField] Image led;
 
-    [SerializeField]  float timer = 0f;
-    float timeToWait = 15f;
-
-    [SerializeField] private float minTime = 10f;
-    [SerializeField] private float maxTime = 30f;
 
     bool SetGood = false;
     bool SetBad = false;
@@ -23,23 +18,11 @@ public class LedIndicator : MonoBehaviour
     
     private void Update()
     {
-        timer += Time.deltaTime;
         SetLight();
-        SetMiniGame();
-
-        // Gefixed
 
     }
 
-    private void SetMiniGame()
-    {
-        if (correct && timer > timeToWait)
-        {
-            timer = 0f;
-            timeToWait = Random.Range(minTime, maxTime);
-            open = !open; 
-        }
-    }
+    
     private void SetLight()
     {
         if (open && fill.fillAmount > 0.8f)
@@ -80,5 +63,10 @@ public class LedIndicator : MonoBehaviour
             SetGood = false;
         }
         
+    }
+
+    public void ActivateGame()
+    {
+        open = !open;
     }
 }

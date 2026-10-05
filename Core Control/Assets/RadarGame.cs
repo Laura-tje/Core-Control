@@ -1,13 +1,19 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
-using System;
-
-public class RadarGame : MonoBehaviour
+using System.Collections;
+using Unity.VisualScripting;
+public interface IGameInteractable
 {
-    [SerializeField] bool isRadarActive = true;
-    [SerializeField] GameObject ChosenButton;
+    void ActivateGame();
+}
+public class RadarGame : MonoBehaviour, IGameInteractable
+{
+    [SerializeField] bool isRadarActive = false;
+    public GameObject ChosenButton;
     [SerializeField] GameObject[] Buttons;
+
+    public int score = 0;
+    public int scoreToWin = 5;
+
     void Start()
     {
         Buttons = GameObject.FindGameObjectsWithTag("RadarButtons");
@@ -16,10 +22,42 @@ public class RadarGame : MonoBehaviour
             button.SetActive(false);
         }
 
+        
     }
 
-    void Update()
+    private void Update()
+    {
+        if (score >= scoreToWin)
+        {
+            isRadarActive = false;
+        }
+
+    }
+
+
+    public void ActivateButton()
     {
         
+        GameObject ChosenButtonTEMP;
+
+        while (true)
+        {
+            ChosenButtonTEMP = Buttons[UnityEngine.Random.Range(0, Buttons.Length)];
+            if (ChosenButtonTEMP != ChosenButton)
+            {
+                break;
+            }
+        }
+            
+        ChosenButton = ChosenButtonTEMP;
+        ChosenButton.SetActive(true);
+        
+    }
+
+    public void ActivateGame()
+    {
+        score = 0;
+        isRadarActive = true;
+        ActivateButton();
     }
 }

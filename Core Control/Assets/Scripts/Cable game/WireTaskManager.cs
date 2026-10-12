@@ -6,6 +6,7 @@ public class WireTaskManager : MonoBehaviour
 {
     public int totalWires = 4;
     public List<WireEnd> ends;
+    public bool startConnected = false;   // vink aan in de Inspector om pre-solved te starten
     int connected;
 
     void Awake()
@@ -53,9 +54,5 @@ public class WireTaskManager : MonoBehaviour
     public void WireConnected()
     {
         connected++;
-        if (connected >= totalWires)
-        {
-            Debug.Log("Taak voltooid!");
-        }
     }
 }

@@ -19,6 +19,19 @@ public class WireStart : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         line.GetComponent<RawImage>().color = wireColor;
         line.GetComponent<RawImage>().raycastTarget = false; // anders blokkeert de kabel de drop
         ResetLine();
+
+        if (manager.startConnected)
+        {
+            Canvas.ForceUpdateCanvases(); // zorg dat de LayoutGroup alles al heeft geplaatst
+            foreach (var end in manager.ends)
+            {
+                if (end.wireColor == wireColor && !end.Connected)
+                {
+                    ConnectTo(end);
+                    break;
+                }
+            }
+        }
     }
 
     public void OnBeginDrag(PointerEventData e) { }
@@ -41,14 +54,18 @@ public class WireStart : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             var end = hit.gameObject.GetComponent<WireEnd>();
             if (end != null && end.wireColor == wireColor && !end.Connected)
             {
-                end.Connected = true;
-                Connected = true;
-                DrawLine(end.transform.position); // snap naar de aansluiting
-                manager.WireConnected();
+                ConnectTo(end);
                 return;
             }
         }
         ResetLine(); // fout of losgelaten in het niets
+    }
+
+    void ConnectTo(WireEnd end)
+    {
+        end.Connected = true;
+        Connected = true;
+        DrawLine(end.transform.position); // snap naar de aansluiting
     }
 
     void DrawLine(Vector2 target)

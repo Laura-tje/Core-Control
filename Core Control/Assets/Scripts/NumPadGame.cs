@@ -41,6 +41,7 @@ public class NumPadGame : MonoBehaviour, IGameInteractable
         {
             
             Debug.Log("You Win!");
+            PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.NumpadGame);
             ButtonVar.playing = false;
             TurnOnToPlay.SetActive(false);
 

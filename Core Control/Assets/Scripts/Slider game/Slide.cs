@@ -62,9 +62,16 @@ public class Slide : MonoBehaviour
         }
     }
 
+    // avoidCurrentValue: kies een doel dat niet toevallig al onder de slider ligt,
+    // zodat een gebroken slider ook echt fout staat.
     private void SetNewTarget()
     {
         float newY = Random.Range(minValue, maxValue);
+
+            float halfSize = targetSize * 0.5f;
+            for (int i = 0; i < 20 && Mathf.Abs(newY - slider.value) <= halfSize; i++)
+                newY = Random.Range(minValue, maxValue);
+        
 
         if (moveRoutine != null)
             StopCoroutine(moveRoutine);

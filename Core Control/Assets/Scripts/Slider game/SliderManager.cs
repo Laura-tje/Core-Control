@@ -42,24 +42,13 @@ public class SliderManager : MonoBehaviour, IGameInteractable
         minigameActive = false;
     }
 
+    // IGameInteractable: elke slider krijgt een nieuw willekeurig doel
     public void ActivateGame()
     {
-        // Direct als probleem markeren, ook als er niks meer te breken valt.
-        // Anders blijft de gauge denken dat het een probleem is dat nooit opgelost wordt.
         minigameActive = true;
 
-        List<Slide> correct = new List<Slide>();
         foreach (Slide slide in sliders)
-        {
-            if (slide.isCorrect)
-                correct.Add(slide);
-        }
-
-        if (correct.Count > 0)
-        {
-            Slide victim = correct[Random.Range(0, correct.Count)];
-            victim.Break();
-        }
+            slide.Break();
 
         UpdateBrokenCount();
     }

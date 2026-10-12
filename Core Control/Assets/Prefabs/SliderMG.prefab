@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 8891102561368372179}
   - component: {fileID: 652329172916920469}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,6 +238,8 @@ MonoBehaviour:
   targetSize: 30
   minValue: 15
   maxValue: 145
+  moveDuration: 0.5
+  startCorrect: 1
 --- !u!1 &415068255023030116
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +960,7 @@ GameObject:
   - component: {fileID: 6782627444780841974}
   - component: {fileID: 5047121771414877035}
   m_Layer: 5
-  m_Name: Slider (2)
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1067,6 +1069,8 @@ MonoBehaviour:
   targetSize: 30
   minValue: 15
   maxValue: 145
+  moveDuration: 0.5
+  startCorrect: 1
 --- !u!1 &3634590937558155705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1788,7 @@ GameObject:
   - component: {fileID: 442688465587890797}
   - component: {fileID: 3803384997894264912}
   m_Layer: 5
-  m_Name: Slider (6)
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1893,6 +1897,8 @@ MonoBehaviour:
   targetSize: 30
   minValue: 15
   maxValue: 145
+  moveDuration: 0.5
+  startCorrect: 1
 --- !u!1 &6018984321098463249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,7 +1986,7 @@ GameObject:
   - component: {fileID: 7000960214621228319}
   - component: {fileID: 1673085792019393126}
   m_Layer: 5
-  m_Name: Slider (5)
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2089,6 +2095,8 @@ MonoBehaviour:
   targetSize: 30
   minValue: 15
   maxValue: 145
+  moveDuration: 0.5
+  startCorrect: 1
 --- !u!1 &6244163931644385625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2518,8 @@ MonoBehaviour:
   targetSize: 30
   minValue: 15
   maxValue: 145
+  moveDuration: 0.5
+  startCorrect: 1
 --- !u!1 &7943058473337057780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,7 +2718,7 @@ GameObject:
   - component: {fileID: 3548080661605276896}
   - component: {fileID: 5658084986992000244}
   m_Layer: 5
-  m_Name: Slider (4)
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2817,6 +2827,8 @@ MonoBehaviour:
   targetSize: 30
   minValue: 15
   maxValue: 145
+  moveDuration: 0.5
+  startCorrect: 1
 --- !u!1 &8715707501760338088
 GameObject:
   m_ObjectHideFlags: 0

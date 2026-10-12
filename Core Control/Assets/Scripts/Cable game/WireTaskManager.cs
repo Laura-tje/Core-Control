@@ -2,21 +2,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class WireTaskManager : MonoBehaviour
+public class WireTaskManager : MonoBehaviour, IGameInteractable
 {
+    public static WireTaskManager Instance { get; private set; }
+
     public int totalWires = 4;
     public List<WireEnd> ends;
     public bool startConnected = false;   // vink aan in de Inspector om pre-solved te starten
-    int connected;
+
+    // Houdt bij welke kabels op dit moment verbonden zijn
+    readonly List<WireStart> connectedWires = new List<WireStart>();
+
+    public int ConnectedCount => connectedWires.Count;
+    public bool AllConnected => connectedWires.Count >= totalWires;
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("WireTaskManager: er is al een instance, deze wordt verwijderd.");
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+
         if (ends == null || ends.Count == 0)
         {
             Debug.LogError("WireTaskManager: 'ends' list is empty, assign the WireEnd objects in the Inspector.");
             return;
         }
         ShuffleEnds();
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 
     void ShuffleEnds()
@@ -51,8 +71,23 @@ public class WireTaskManager : MonoBehaviour
         }
     }
 
-    public void WireConnected()
+    // Wordt aangeroepen door WireStart
+    public void WireConnected(WireStart wire)
     {
-        connected++;
+        if (!connectedWires.Contains(wire))
+            connectedWires.Add(wire);
+    }
+
+    public void WireDisconnected(WireStart wire)
+    {
+        connectedWires.Remove(wire);
+    }
+
+    // IGameInteractable: koppelt alle verbonden kabels los.
+    public void ActivateGame()
+    {
+        // Kopie, want Disconnect() haalt de kabel uit connectedWires
+        foreach (var wire in new List<WireStart>(connectedWires))
+            wire.Disconnect();
     }
 }

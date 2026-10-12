@@ -9,9 +9,10 @@ public class WireStart : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public Color wireColor = Color.red;
     public RectTransform line;      // de "kabel" (Image, Raycast Target UIT)
     public Canvas canvas;
-    public WireTaskManager manager;
 
     public bool Connected { get; private set; }
+
+    WireEnd connectedEnd;           // onthoudt welke aansluiting we vasthebben
 
     void Start()
     {
@@ -20,7 +21,8 @@ public class WireStart : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         line.GetComponent<RawImage>().raycastTarget = false; // anders blokkeert de kabel de drop
         ResetLine();
 
-        if (manager.startConnected)
+        var manager = WireTaskManager.Instance;
+        if (manager != null && manager.startConnected)
         {
             Canvas.ForceUpdateCanvases(); // zorg dat de LayoutGroup alles al heeft geplaatst
             foreach (var end in manager.ends)
@@ -64,8 +66,30 @@ public class WireStart : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void ConnectTo(WireEnd end)
     {
         end.Connected = true;
+        connectedEnd = end;
         Connected = true;
         DrawLine(end.transform.position); // snap naar de aansluiting
+
+        if (WireTaskManager.Instance != null)
+            WireTaskManager.Instance.WireConnected(this);
+    }
+
+    // Publiek: koppelt deze specifieke kabel los.
+    // Voor een willekeurige kabel: WireTaskManager.Instance.DisconnectRandom()
+    public void Disconnect()
+    {
+        if (!Connected) return;
+
+        if (connectedEnd != null)
+        {
+            connectedEnd.Connected = false;
+            connectedEnd = null;
+        }
+        Connected = false;
+        ResetLine();
+
+        if (WireTaskManager.Instance != null)
+            WireTaskManager.Instance.WireDisconnected(this);
     }
 
     void DrawLine(Vector2 target)

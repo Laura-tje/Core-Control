@@ -405,6 +405,17 @@ MonoBehaviour:
   timeIncrease: 0
   features: []
   BrokenGlass: {fileID: 0}
+  IsProblem: 00000000000000
+  Games:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxAmountOfProblems: 4
+  problemSpawnDelay: 3
 --- !u!1 &8013958017695568600
 GameObject:
   m_ObjectHideFlags: 0

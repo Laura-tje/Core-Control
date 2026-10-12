@@ -212,7 +212,6 @@ MonoBehaviour:
   wireColor: {r: 0, g: 0.29803923, b: 1, a: 1}
   line: {fileID: 2690979888002047300}
   canvas: {fileID: 0}
-  manager: {fileID: 8077389309082795287}
 --- !u!1 &1286756615947814299
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +424,6 @@ MonoBehaviour:
   wireColor: {r: 1, g: 0.11372549, b: 0, a: 1}
   line: {fileID: 2643858138690720769}
   canvas: {fileID: 0}
-  manager: {fileID: 8077389309082795287}
 --- !u!1 &3687609958135648716
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,12 +708,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalWires: 4
-  taskPanel: {fileID: 0}
   ends:
   - {fileID: 5477314554447967795}
   - {fileID: 7414580888444947629}
   - {fileID: 7546114870086406375}
   - {fileID: 6147010514615842664}
+  startConnected: 1
 --- !u!1 &5965708490144231194
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +802,6 @@ MonoBehaviour:
   wireColor: {r: 1, g: 0.5019608, b: 0, a: 1}
   line: {fileID: 5271406960329947605}
   canvas: {fileID: 0}
-  manager: {fileID: 8077389309082795287}
 --- !u!1 &6107200121577737804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1182,6 @@ MonoBehaviour:
   wireColor: {r: 0.78431374, g: 0, b: 1, a: 1}
   line: {fileID: 6222949121928089929}
   canvas: {fileID: 0}
-  manager: {fileID: 8077389309082795287}
 --- !u!1 &8865289912188729624
 GameObject:
   m_ObjectHideFlags: 0

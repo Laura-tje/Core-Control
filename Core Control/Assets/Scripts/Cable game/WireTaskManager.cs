@@ -13,6 +13,9 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
     // Houdt bij welke kabels op dit moment verbonden zijn
     readonly List<WireStart> connectedWires = new List<WireStart>();
 
+    // true zodra de gauge deze game kapot heeft gemaakt en hij nog niet is opgelost
+    bool isBroken;
+
     public int ConnectedCount => connectedWires.Count;
     public bool AllConnected => connectedWires.Count >= totalWires;
 
@@ -76,6 +79,16 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
     {
         if (!connectedWires.Contains(wire))
             connectedWires.Add(wire);
+
+        // Alles verbonden na een breuk: meld de gauge dat het opgelost is.
+        // Bij een nieuwe ActivateGame() kan het weer kapot en daarna opnieuw opgelost worden.
+        if (isBroken && AllConnected)
+        {
+            isBroken = false;
+
+            if (PressureGauge.Instance != null)
+                PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.CableGame);
+        }
     }
 
     public void WireDisconnected(WireStart wire)
@@ -86,6 +99,8 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
     // IGameInteractable: koppelt alle verbonden kabels los.
     public void ActivateGame()
     {
+        isBroken = true;
+
         // Kopie, want Disconnect() haalt de kabel uit connectedWires
         foreach (var wire in new List<WireStart>(connectedWires))
             wire.Disconnect();

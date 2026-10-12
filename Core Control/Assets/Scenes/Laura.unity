@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fingerprint: {fileID: 2137372309}
+  finger: {fileID: 2137372315}
 --- !u!1 &1186442731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5477615250064381796, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
@@ -1899,6 +1900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 1370223230}
+  isProblem: 0
   redLight: {fileID: 1359650510}
   greenLight: {fileID: 1331555431}
 --- !u!1001 &3559610768425151933

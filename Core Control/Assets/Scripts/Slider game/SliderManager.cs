@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SliderManager : MonoBehaviour
+public class SliderManager : MonoBehaviour, IGameInteractable
 {
     public static SliderManager Instance { get; private set; }
 
@@ -31,27 +31,15 @@ public class SliderManager : MonoBehaviour
 
     private void Start()
     {
-        breakRoutine = StartCoroutine(BreakRoutine());
-
         if (pressureGauge == null)
         {
             pressureGauge = FindAnyObjectByType<PressureGauge>();
         }
 
         minigameActive = true;
-        //pressureGauge.timeIncrease += severity;
     }
 
-    private IEnumerator BreakRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(minBreakInterval, maxBreakInterval));
-            BreakRandomSlider();
-        }
-    }
-
-    private void BreakRandomSlider()
+    public void ActivateGame()
     {
         List<Slide> correct = new List<Slide>();
         foreach (Slide slide in sliders)
@@ -68,7 +56,6 @@ public class SliderManager : MonoBehaviour
         if (!minigameActive)
         {
             minigameActive = true;
-            //pressureGauge.timeIncrease += severity;
         }
 
         UpdateBrokenCount();
@@ -102,7 +89,6 @@ public class SliderManager : MonoBehaviour
         if (minigameActive)
         {
             minigameActive = false;
-            //pressureGauge.timeIncrease -= severity;
         }
     }
 

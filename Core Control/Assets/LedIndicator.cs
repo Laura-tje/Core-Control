@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,35 +10,45 @@ public class LedIndicator : MonoBehaviour, IGameInteractable
     [SerializeField] Sprite red;
     [SerializeField] Image led;
 
-
+    float timer;
     bool SetGood = false;
     bool SetBad = false;
 
     public bool correct;
 
-    
+    private void Start()
+    {
+        fill.fillAmount = 0.9f;
+    }
+
     private void Update()
     {
         SetLight();
-
+        
+        timer += Time.deltaTime;
     }
 
     
     private void SetLight()
     {
-        if (open && fill.fillAmount > 0.8f)
+        if(timer > 0.1f)
         {
-            True();
+            if (open && fill.fillAmount > 0.8f)
+            {
+                True();
 
+            }
+            else if (!open && fill.fillAmount < 0.2f)
+            {
+                True();
+            }
+            else
+            {
+                False();
+            }
+            timer = 0f;
         }
-        else if (!open && fill.fillAmount < 0.2f)
-        {
-            True();
-        }
-        else
-        {
-            False();
-        }
+        
     }
 
     private void True()
@@ -47,8 +58,10 @@ public class LedIndicator : MonoBehaviour, IGameInteractable
         if(SetGood == false)
         {
             //PressureGauge.Instance.timeIncrease -= 1f;
+            
             SetGood = true;
             SetBad = false;
+            PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.DraaiknopGame);
         }
     }
 
@@ -59,7 +72,6 @@ public class LedIndicator : MonoBehaviour, IGameInteractable
         if(SetBad == false)
         {
             //PressureGauge.Instance.timeIncrease += 1f;
-            PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.DraaiknopGame);
             SetBad = true;
             SetGood = false;
         }

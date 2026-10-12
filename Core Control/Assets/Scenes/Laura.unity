@@ -242,71 +242,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 56106389404557349, guid: a8e4020545394b745af9b60a0833855f, type: 3}
   m_PrefabInstance: {fileID: 1594524788}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &317090595
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2452654794423608097, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: pressureGauge
-      value: 
-      objectReference: {fileID: 3559610768425151934}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739718707549091900, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509469229160706913, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_Name
-      value: CableMG
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509469229160706913, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
 --- !u!224 &361042463 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3375585223967854946, guid: e938fddc1ebae2f438c09e7e490d3f3b, type: 3}
@@ -1070,6 +1005,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CableMG (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6196712930561300212, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 134230531}
+    - target: {fileID: 6386911120056450040, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 134230531}
+    - target: {fileID: 7043582197423146200, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 134230531}
     - target: {fileID: 7191777110376286005, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1150,6 +1097,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8568167864034870451, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 134230531}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2066,5 +2017,4 @@ SceneRoots:
   - {fileID: 2078687726}
   - {fileID: 3559610768425151933}
   - {fileID: 1224971930}
-  - {fileID: 317090595}
   - {fileID: 134230530}

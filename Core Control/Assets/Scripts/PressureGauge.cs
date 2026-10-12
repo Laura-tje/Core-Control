@@ -17,9 +17,7 @@ public class PressureGauge : MonoBehaviour
     [SerializeField] private float gaugeMin;
     [SerializeField] private float gaugeMax;
 
-    public int
-        timeIncrease =
-            0; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
+    public int timeIncrease = 0; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
 
     public GameObject[] features; //put the switches and stuff in here
 
@@ -28,14 +26,15 @@ public class PressureGauge : MonoBehaviour
     private float startingRotation = 145f;
 
     public List<bool> IsProblem;
-    public List<GameObject> Games;
+    public List<GameObject> Games; //zelfde volgorde als de EGames enum!
     [SerializeField] private int maxAmountOfProblems;
 
     [SerializeField] private float problemSpawnDelay = 3f;
     private float spawnTimer;
     private bool isExploded;
 
-    public enum EGames{
+    public enum EGames
+    {
         CableGame = 0,
         NumpadGame = 1,
         DraaiknopGame = 2,
@@ -72,12 +71,28 @@ public class PressureGauge : MonoBehaviour
         startingRotation = gauge.transform.localEulerAngles.z;
 
         BrokenGlass.SetActive(false);
+
+        //zorg dat IsProblem altijd even lang is als Games, en alles begint op false
+        IsProblem.Clear();
+        for (int i = 0; i < Games.Count; i++)
+        {
+            IsProblem.Add(false);
+        }
+
+        //je kan nooit meer problemen hebben dan er games zijn
+        if (maxAmountOfProblems > Games.Count)
+        {
+            maxAmountOfProblems = Games.Count;
+        }
     }
 
     void Update()
     {
-        if (isExploded) return;
-        
+        if (isExploded)
+        {
+            return;
+        }
+
         gaugeRotation = Mathf.Lerp(gaugeMin, gaugeMax, timer / 100f);
         gauge.transform.localRotation = Quaternion.Euler(0, 0, startingRotation + gaugeRotation);
 
@@ -85,7 +100,6 @@ public class PressureGauge : MonoBehaviour
         {
             timeIncrease = 0;
             timer -= Time.deltaTime;
-
         }
         else
         {
@@ -98,7 +112,11 @@ public class PressureGauge : MonoBehaviour
             StartCoroutine(Explode());
             return;
         }
-        if (timer < 0) timer = 0;
+
+        if (timer < 0)
+        {
+            timer = 0;
+        }
 
         if (CheckForAmountProblems() < maxAmountOfProblems)
         {
@@ -107,33 +125,43 @@ public class PressureGauge : MonoBehaviour
             if (spawnTimer >= problemSpawnDelay)
             {
                 spawnTimer = 0;
-                IsProblem[FindNewProblem()] = true;
+                StartNewProblem();
             }
         }
         else
         {
             spawnTimer = 0;
         }
-        
+
         timeIncrease = CheckForAmountProblems();
-
-        //helppp deze foreach faalt
-        for (int i = 0; i < Games.Count; i++)
-        {
-            if (IsProblem[i] == true)
-            {
-                Debug.Log("dit is game: " + Games[i]);
-
-                IGameInteractable minigame = Games[i].GetComponent<IGameInteractable>();
-                if (minigame != null)
-                {
-                    minigame.ActivateGame();
-                }
-            }
-        }
-        
     }
 
+    //kiest een random minigame uit en zet hem kapot (wordt maar 1x aangeroepen per probleem)
+    private void StartNewProblem()
+    {
+        int index = FindNewProblem();
+
+        if (index == -1)
+        {
+            return;
+        }
+
+        IsProblem[index] = true;
+
+        IGameInteractable minigame = Games[index].GetComponentInChildren<IGameInteractable>();
+
+        if (minigame != null)
+        {
+            Debug.Log("dit is game: " + Games[index].name);
+            minigame.ActivateGame();
+        }
+        else
+        {
+            Debug.LogWarning("Geen IGameInteractable gevonden op " + Games[index].name);
+        }
+    }
+
+    //roep dit aan vanuit de minigame zodra hij gefixed is
     public void MiniGameSolved(int Whichgame)
     {
         IsProblem[Whichgame] = false;
@@ -142,7 +170,7 @@ public class PressureGauge : MonoBehaviour
     private IEnumerator Explode()
     {
         Debug.Log("Explode, you died :( !");
-        BrokenGlass.SetActive(true); 
+        BrokenGlass.SetActive(true);
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -154,7 +182,15 @@ public class PressureGauge : MonoBehaviour
         for (int i = 0; i < IsProblem.Count; i++)
         {
             if (!IsProblem[i])
+            {
                 falseProblems.Add(i);
+            }
+        }
+
+        //alles is al kapot, dus niks om te kiezen
+        if (falseProblems.Count == 0)
+        {
+            return -1;
         }
 
         return falseProblems[UnityEngine.Random.Range(0, falseProblems.Count)];
@@ -171,6 +207,7 @@ public class PressureGauge : MonoBehaviour
                 counter++;
             }
         }
+
         return counter;
     }
 }

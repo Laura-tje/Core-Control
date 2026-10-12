@@ -1478,7 +1478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3519918765508200878, guid: 70cfca466f664114fa627834806e59d1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1987,6 +1987,10 @@ PrefabInstance:
       propertyPath: 'Games.Array.data[6]'
       value: 
       objectReference: {fileID: 471520280}
+    - target: {fileID: 3063176002875250888, guid: 88e24de70ae9e004793311c75e383549, type: 3}
+      propertyPath: maxAmountOfProblems
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3063176002875250888, guid: 88e24de70ae9e004793311c75e383549, type: 3}
       propertyPath: IsProblem.Array.size
       value: 7

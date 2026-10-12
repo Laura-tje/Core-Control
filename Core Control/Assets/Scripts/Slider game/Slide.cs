@@ -12,6 +12,9 @@ public class Slide : MonoBehaviour
     [SerializeField] private float maxValue = 145f;
     [SerializeField] private float moveDuration = 0.5f;
 
+    [Tooltip("Aan: de slider begint op de juiste plek. Uit: het doel beweegt naar een willekeurige plek zoals eerst.")]
+    [SerializeField] private bool startCorrect = true;
+
     private Coroutine moveRoutine;
 
     public bool isCorrect { get; private set; }
@@ -19,7 +22,27 @@ public class Slide : MonoBehaviour
 
     private void Start()
     {
-        SetNewTarget();
+        if (startCorrect)
+            SnapToCorrect();
+        else
+            SetNewTarget();
+    }
+
+    // Zet het doel op een willekeurige plek en de slider er meteen middenin
+    private void SnapToCorrect()
+    {
+        // Eerst de status, zodat CheckCorrect (bijv. via de onValueChanged van de slider)
+        // de manager niet nog een keer meldt.
+        isCorrect = true;
+        isWrong = false;
+
+        float newY = Random.Range(minValue, maxValue);
+
+        Vector2 pos = target.anchoredPosition;
+        pos.y = newY;
+        target.anchoredPosition = pos;
+
+        slider.value = Mathf.Clamp(newY, slider.minValue, slider.maxValue);
     }
 
     public void CheckCorrect(float value)

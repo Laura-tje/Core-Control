@@ -15,6 +15,8 @@ public class SliderManager : MonoBehaviour, IGameInteractable
 
     private Slide[] sliders;
     private Coroutine breakRoutine;
+
+    // true zodra de gauge deze game kapot heeft gemaakt en hij nog niet is opgelost
     private bool minigameActive;
 
     private void Awake()
@@ -36,11 +38,16 @@ public class SliderManager : MonoBehaviour, IGameInteractable
             pressureGauge = FindAnyObjectByType<PressureGauge>();
         }
 
-        minigameActive = true;
+        // De game begint heel; pas ActivateGame() maakt hem kapot
+        minigameActive = false;
     }
 
     public void ActivateGame()
     {
+        // Direct als probleem markeren, ook als er niks meer te breken valt.
+        // Anders blijft de gauge denken dat het een probleem is dat nooit opgelost wordt.
+        minigameActive = true;
+
         List<Slide> correct = new List<Slide>();
         foreach (Slide slide in sliders)
         {
@@ -48,14 +55,10 @@ public class SliderManager : MonoBehaviour, IGameInteractable
                 correct.Add(slide);
         }
 
-        if (correct.Count == 0) return;
-
-        Slide victim = correct[Random.Range(0, correct.Count)];
-        victim.Break();
-
-        if (!minigameActive)
+        if (correct.Count > 0)
         {
-            minigameActive = true;
+            Slide victim = correct[Random.Range(0, correct.Count)];
+            victim.Break();
         }
 
         UpdateBrokenCount();
@@ -86,10 +89,12 @@ public class SliderManager : MonoBehaviour, IGameInteractable
                 return;
         }
 
-        if (minigameActive)
-        {
-            minigameActive = false;
-        }
+        if (!minigameActive) return;   // niet kapot gemaakt, dus niks op te lossen
+
+        minigameActive = false;
+
+        if (pressureGauge != null)
+            pressureGauge.MiniGameSolved((int)PressureGauge.EGames.SliderGame);
     }
 
     private void OnDestroy()

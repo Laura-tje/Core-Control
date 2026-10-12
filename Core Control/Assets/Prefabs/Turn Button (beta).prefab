@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3394167016281364167}
   m_Layer: 5
-  m_Name: Turn Button
+  m_Name: Turn Button (beta)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

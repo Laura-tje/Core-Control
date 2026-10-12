@@ -10,6 +10,11 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
     public List<WireEnd> ends;
     public bool startConnected = false;
 
+    [Tooltip("Hoeveel pixels hoogteverschil nog als 'zelfde lijn' telt.")]
+    public float alignTolerance = 5f;
+
+    const int MaxShuffleAttempts = 50;
+
     readonly List<WireStart> connectedWires = new List<WireStart>();
 
     bool isBroken;
@@ -40,25 +45,57 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
         if (Instance == this) Instance = null;
     }
 
+    // Husselt de ends net zo lang tot geen enkele start op dezelfde lijn staat als zijn eigen kleur-end.
     void ShuffleEnds()
     {
-        bool inLayout = ends[0].transform.parent.GetComponent<LayoutGroup>() != null;
+        Canvas.ForceUpdateCanvases(); // zorg dat layouts hun echte posities hebben
 
-        if (inLayout)
+        bool inLayout = ends[0].transform.parent.GetComponent<LayoutGroup>() != null;
+        var starts = FindObjectsByType<WireStart>(FindObjectsSortMode.None);
+
+        // De plekken waar de ends nu staan (alleen nodig buiten een layout)
+        var slots = new List<Vector3>();
+        foreach (var e in ends) slots.Add(e.transform.position);
+
+        for (int attempt = 0; attempt < MaxShuffleAttempts; attempt++)
         {
-            var order = new List<WireEnd>(ends);
-            Shuffle(order);
-            for (int i = 0; i < order.Count; i++)
-                order[i].transform.SetSiblingIndex(i);
+            if (inLayout)
+            {
+                var order = new List<WireEnd>(ends);
+                Shuffle(order);
+                for (int i = 0; i < order.Count; i++)
+                    order[i].transform.SetSiblingIndex(i);
+
+                // De layout moet de nieuwe volgorde eerst verwerken voordat we posities kunnen vergelijken
+                LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)ends[0].transform.parent);
+            }
+            else
+            {
+                Shuffle(slots);
+                for (int i = 0; i < ends.Count; i++)
+                    ends[i].transform.position = slots[i];
+            }
+
+            if (!AnyStartAlignedWithEnd(starts))
+                return;
         }
-        else
+
+        Debug.LogWarning("WireTaskManager: geen opstelling gevonden zonder kabels op dezelfde lijn, laatste husseling blijft staan.");
+    }
+
+    // True als een start op dezelfde hoogte staat als een end van dezelfde kleur
+    bool AnyStartAlignedWithEnd(WireStart[] starts)
+    {
+        foreach (var s in starts)
         {
-            var slots = new List<Vector3>();
-            foreach (var e in ends) slots.Add(e.transform.position);
-            Shuffle(slots);
-            for (int i = 0; i < ends.Count; i++)
-                ends[i].transform.position = slots[i];
+            foreach (var e in ends)
+            {
+                if (e.wireColor == s.wireColor &&
+                    Mathf.Abs(s.transform.position.y - e.transform.position.y) <= alignTolerance)
+                    return true;
+            }
         }
+        return false;
     }
 
     static void Shuffle<T>(List<T> list)
@@ -89,14 +126,15 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
         connectedWires.Remove(wire);
     }
 
-    // IGameInteractable: koppelt één willekeurige verbonden kabel los.
     public void ActivateGame()
     {
         isBroken = true;
 
-        if (connectedWires.Count == 0) return;   // alles is al los, het probleem staat al
+        foreach (var wire in new List<WireStart>(connectedWires))
+        {
+            wire.Disconnect();
+        }
 
-        var wire = connectedWires[Random.Range(0, connectedWires.Count)];
-        wire.Disconnect();   // meldt zichzelf af via WireDisconnected
+        ShuffleEnds();
     }
-}   
+}

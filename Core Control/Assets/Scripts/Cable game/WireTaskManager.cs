@@ -8,12 +8,10 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
 
     public int totalWires = 4;
     public List<WireEnd> ends;
-    public bool startConnected = false;   // vink aan in de Inspector om pre-solved te starten
+    public bool startConnected = false;
 
-    // Houdt bij welke kabels op dit moment verbonden zijn
     readonly List<WireStart> connectedWires = new List<WireStart>();
 
-    // true zodra de gauge deze game kapot heeft gemaakt en hij nog niet is opgelost
     bool isBroken;
 
     public int ConnectedCount => connectedWires.Count;
@@ -48,7 +46,6 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
 
         if (inLayout)
         {
-            // Shuffle the order; the layout group places them
             var order = new List<WireEnd>(ends);
             Shuffle(order);
             for (int i = 0; i < order.Count; i++)
@@ -56,7 +53,6 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
         }
         else
         {
-            // Shuffle the world positions the ends occupy
             var slots = new List<Vector3>();
             foreach (var e in ends) slots.Add(e.transform.position);
             Shuffle(slots);
@@ -74,14 +70,11 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
         }
     }
 
-    // Wordt aangeroepen door WireStart
     public void WireConnected(WireStart wire)
     {
         if (!connectedWires.Contains(wire))
             connectedWires.Add(wire);
 
-        // Alles verbonden na een breuk: meld de gauge dat het opgelost is.
-        // Bij een nieuwe ActivateGame() kan het weer kapot en daarna opnieuw opgelost worden.
         if (isBroken && AllConnected)
         {
             isBroken = false;
@@ -96,13 +89,14 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
         connectedWires.Remove(wire);
     }
 
-    // IGameInteractable: koppelt alle verbonden kabels los.
+    // IGameInteractable: koppelt één willekeurige verbonden kabel los.
     public void ActivateGame()
     {
         isBroken = true;
 
-        // Kopie, want Disconnect() haalt de kabel uit connectedWires
-        foreach (var wire in new List<WireStart>(connectedWires))
-            wire.Disconnect();
+        if (connectedWires.Count == 0) return;   // alles is al los, het probleem staat al
+
+        var wire = connectedWires[Random.Range(0, connectedWires.Count)];
+        wire.Disconnect();   // meldt zichzelf af via WireDisconnected
     }
-}
+}   

@@ -29,6 +29,7 @@ public class ButtonGame : MonoBehaviour, IGameInteractable
                 Debug.Log("You win!");
                 GameStart = false;
                 //PressureGauge.timeIncrease -= Severity;
+                PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.ButtonGame);
             }
             else
             {

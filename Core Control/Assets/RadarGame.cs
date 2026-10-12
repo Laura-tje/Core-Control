@@ -27,6 +27,7 @@ public class RadarGame : MonoBehaviour, IGameInteractable
         if (score >= scoreToWin)
         {
             isRadarActive = false;
+            PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.RadarGame);
         }
 
     }

@@ -59,6 +59,7 @@ public class LedIndicator : MonoBehaviour, IGameInteractable
         if(SetBad == false)
         {
             //PressureGauge.Instance.timeIncrease += 1f;
+            PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.DraaiknopGame);
             SetBad = true;
             SetGood = false;
         }

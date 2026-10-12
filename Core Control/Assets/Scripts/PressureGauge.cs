@@ -17,7 +17,10 @@ public class PressureGauge : MonoBehaviour
     [SerializeField] private float gaugeMin;
     [SerializeField] private float gaugeMax;
 
-    public int timeIncrease = 0; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
+    public int
+        timeIncrease =
+            0; //als iets onstabiel is, add 1 of 2 hieraan om de timer sneller te laten gaan, zodra gefixed, haal het er weer af.
+
     public GameObject[] features; //put the switches and stuff in here
 
     [SerializeField] private GameObject BrokenGlass;
@@ -25,11 +28,22 @@ public class PressureGauge : MonoBehaviour
     private float startingRotation = 145f;
 
     public List<bool> IsProblem;
+    public List<GameObject> Games;
     [SerializeField] private int maxAmountOfProblems;
-    
+
     [SerializeField] private float problemSpawnDelay = 3f;
     private float spawnTimer;
     private bool isExploded;
+
+    public enum EGames{
+        CableGame = 0,
+        NumpadGame = 1,
+        DraaiknopGame = 2,
+        SliderGame = 3,
+        FingerprintGame = 4,
+        ButtonGame = 5,
+        RadarGame = 6,
+    };
 
     void Awake()
     {
@@ -102,7 +116,27 @@ public class PressureGauge : MonoBehaviour
         }
         
         timeIncrease = CheckForAmountProblems();
+
+        //helppp deze foreach faalt
+        for (int i = 0; i < Games.Count; i++)
+        {
+            if (IsProblem[i] == true)
+            {
+                Debug.Log("dit is game: " + Games[i]);
+
+                IGameInteractable minigame = Games[i].GetComponent<IGameInteractable>();
+                if (minigame != null)
+                {
+                    minigame.ActivateGame();
+                }
+            }
+        }
         
+    }
+
+    public void MiniGameSolved(int Whichgame)
+    {
+        IsProblem[Whichgame] = false;
     }
 
     private IEnumerator Explode()
@@ -111,7 +145,6 @@ public class PressureGauge : MonoBehaviour
         BrokenGlass.SetActive(true); 
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
     }
 
     private int FindNewProblem()

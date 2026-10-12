@@ -1,10 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
-public interface IGameInteractable
-{
-    void ActivateGame();
-}
+
 public class RadarGame : MonoBehaviour, IGameInteractable
 {
     [SerializeField] bool isRadarActive = false;

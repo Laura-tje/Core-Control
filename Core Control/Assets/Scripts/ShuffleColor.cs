@@ -11,6 +11,7 @@ public class ShuffleColor : MonoBehaviour
     private void Start()
     {
         UpdateColor();
+        
     }
     public void UpdateColor()
     {

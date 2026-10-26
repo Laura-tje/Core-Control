@@ -1,5 +1,3 @@
-
-
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,15 +16,12 @@ public class NumPadGame : MonoBehaviour, IGameInteractable
     bool SetGood = false;
     bool SetBad = false;
 
-
-    
-
-
     void Update()
     {
         
 
-        if (ButtonVar.playing == true) {
+        if (ButtonVar.playing == true) 
+        {
         
             if(SetBad == false)
             {
@@ -38,14 +33,14 @@ public class NumPadGame : MonoBehaviour, IGameInteractable
 
 
        if (Amount == AmountOfButtons)
-        {
+       {
             
             Debug.Log("You Win!");
             PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.NumpadGame);
             ButtonVar.playing = false;
             TurnOnToPlay.SetActive(false);
 
-        }
+       }
         
     }
 

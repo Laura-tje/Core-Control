@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SliderManager : MonoBehaviour, IGameInteractable
 {
@@ -12,6 +11,8 @@ public class SliderManager : MonoBehaviour, IGameInteractable
     [SerializeField] private float maxBreakInterval;
     [SerializeField] private PressureGauge pressureGauge;
     [SerializeField] private float severity;
+
+    [SerializeField] private Image LEDIndicator;
 
     private Slide[] sliders;
     private Coroutine breakRoutine;
@@ -83,12 +84,20 @@ public class SliderManager : MonoBehaviour, IGameInteractable
         minigameActive = false;
 
         if (pressureGauge != null)
+        {
             pressureGauge.MiniGameSolved((int)PressureGauge.EGames.SliderGame);
+            ChangeIndicator(PressureGauge.Instance.onLED);
+        }
     }
 
     private void OnDestroy()
     {
         if (Instance == this)
             Instance = null;
+    }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        LEDIndicator.sprite = indicator;
     }
 }

@@ -82,4 +82,9 @@ public class LedIndicator : MonoBehaviour, IGameInteractable
     {
         open = !open;
     }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        
+    }
 }

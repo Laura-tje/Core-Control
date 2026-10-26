@@ -60,4 +60,9 @@ public class Fingerprintgame : MonoBehaviour, IGameInteractable
             Debug.LogError("Fingerprintgame: geen PressureGauge.Instance gevonden!");
         }
     }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        
+    }
 }

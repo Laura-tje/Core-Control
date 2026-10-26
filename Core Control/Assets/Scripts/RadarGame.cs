@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class RadarGame : MonoBehaviour, IGameInteractable
 {
@@ -10,6 +11,8 @@ public class RadarGame : MonoBehaviour, IGameInteractable
 
     public int score = 0;
     public int scoreToWin = 5;
+
+    [SerializeField] private Image LEDIndicator;
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class RadarGame : MonoBehaviour, IGameInteractable
         {
             isRadarActive = false;
             PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.RadarGame);
+            ChangeIndicator(PressureGauge.Instance.onLED);
         }
 
     }
@@ -57,5 +61,10 @@ public class RadarGame : MonoBehaviour, IGameInteractable
         score = 0;
         isRadarActive = true;
         ActivateButton();
+    }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        LEDIndicator.sprite = indicator;
     }
 }

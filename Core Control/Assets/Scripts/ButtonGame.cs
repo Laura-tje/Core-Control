@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonGame : MonoBehaviour, IGameInteractable
 {
@@ -17,6 +18,7 @@ public class ButtonGame : MonoBehaviour, IGameInteractable
     [SerializeField] PressureGauge PressureGauge;
     [SerializeField] private float Severity = 2f;
 
+    [SerializeField] private Image LEDIndicator;
    
 
     private void Update()
@@ -30,6 +32,7 @@ public class ButtonGame : MonoBehaviour, IGameInteractable
                 GameStart = false;
                 //PressureGauge.timeIncrease -= Severity;
                 PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.ButtonGame);
+                ChangeIndicator(PressureGauge.Instance.onLED);
             }
             else
             {
@@ -70,5 +73,10 @@ public class ButtonGame : MonoBehaviour, IGameInteractable
     {
         GameStart = true;
         ButtonsPressed = 0;
+    }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        LEDIndicator.sprite = indicator;
     }
 }

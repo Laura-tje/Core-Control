@@ -26,6 +26,8 @@ public class PressureGauge : MonoBehaviour
     [SerializeField] private int maxAmountOfProblems;
     [SerializeField] private float problemSpawnDelay = 3f;
 
+    public Sprite offLED, onLED;
+
     private float startingRotation;
     private float spawnTimer;
     private bool isExploded;
@@ -122,6 +124,7 @@ public class PressureGauge : MonoBehaviour
         if (minigame != null)
         {
             minigame.ActivateGame();
+            minigame.ChangeIndicator(offLED);
         }
     }
 

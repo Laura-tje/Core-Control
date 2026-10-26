@@ -22,6 +22,8 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
     public int ConnectedCount => connectedWires.Count;
     public bool AllConnected => connectedWires.Count >= totalWires;
 
+    [SerializeField] private Image LEDIndicator;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -117,7 +119,10 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
             isBroken = false;
 
             if (PressureGauge.Instance != null)
+            {
                 PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.CableGame);
+                ChangeIndicator(PressureGauge.Instance.onLED);
+            }
         }
     }
 
@@ -136,5 +141,10 @@ public class WireTaskManager : MonoBehaviour, IGameInteractable
         }
 
         ShuffleEnds();
+    }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        
     }
 }

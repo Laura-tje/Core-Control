@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class NumPadGame : MonoBehaviour, IGameInteractable
 {
@@ -15,8 +15,11 @@ public class NumPadGame : MonoBehaviour, IGameInteractable
     public int AmountOfButtons = 9;
     public int Amount = 0;
 
+    [SerializeField] private Image LEDIndicator;
+
     bool SetGood = false;
     bool SetBad = false;
+
 
 
     
@@ -44,7 +47,7 @@ public class NumPadGame : MonoBehaviour, IGameInteractable
             PressureGauge.Instance.MiniGameSolved((int)PressureGauge.EGames.NumpadGame);
             ButtonVar.playing = false;
             TurnOnToPlay.SetActive(false);
-
+            ChangeIndicator(PressureGauge.Instance.onLED);
         }
         
     }
@@ -79,5 +82,10 @@ public class NumPadGame : MonoBehaviour, IGameInteractable
             SetGood = true;
             SetBad = false;
         }
+    }
+
+    public void ChangeIndicator(Sprite indicator)
+    {
+        LEDIndicator.sprite = indicator;
     }
 }

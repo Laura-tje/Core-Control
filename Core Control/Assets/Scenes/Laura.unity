@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fingerprint: {fileID: 2137372309}
-  finger: {fileID: 0}
+  finger: {fileID: 2137372315}
 --- !u!1 &1186442731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5477615250064381796, guid: 4a27aac2a0fd84648a7ef6072358ca3e, type: 3}
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3700435722219135045, guid: b77ad619cbd47fa498aca19fcb80de70, type: 3}
+  m_Sprite: {fileID: 2599969905456701152, guid: 7e8ec411e14d0eb4ebe01e5a9f26d79c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -912,7 +912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8360998219220593303, guid: b77ad619cbd47fa498aca19fcb80de70, type: 3}
+  m_Sprite: {fileID: 4427790141269597716, guid: 7e8ec411e14d0eb4ebe01e5a9f26d79c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 2137372311}
   - component: {fileID: 2137372315}
   m_Layer: 0
-  m_Name: finger1
+  m_Name: finger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

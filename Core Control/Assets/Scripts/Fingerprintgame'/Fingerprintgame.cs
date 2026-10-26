@@ -3,7 +3,7 @@ using UnityEngine;
 public class Fingerprintgame : MonoBehaviour, IGameInteractable
 {
     [SerializeField] private GameObject fingerprint;
-    [SerializeField] private Finger finger; //het lampje script
+    [SerializeField] private Finger finger; // het lampje script
 
     private bool gameActive = false;
 
@@ -17,20 +17,23 @@ public class Fingerprintgame : MonoBehaviour, IGameInteractable
 
     void Update()
     {
-        //als de game actief is en Finger heeft het probleem opgelost, is de game klaar
+        if (finger == null) return;
+
+        // game is klaar zodra Finger het probleem heeft opgelost
         if (gameActive && !finger.isProblem)
         {
             MiniGameFinished();
-            gameActive = false;
         }
     }
 
-    //wordt aangeroepen door de PressureGauge zodra deze game kapot gaat
+    // wordt aangeroepen door de PressureGauge zodra deze game kapot gaat
     public void ActivateGame()
     {
-        //als de game al actief is, niks doen (voorkomt dat hij opnieuw start als dit vaker wordt aangeroepen)
-        if (gameActive)
+        if (gameActive) return;
+
+        if (finger == null)
         {
+            Debug.LogError("Fingerprintgame: ActivateGame kan niet, Finger ontbreekt!");
             return;
         }
 
@@ -42,7 +45,6 @@ public class Fingerprintgame : MonoBehaviour, IGameInteractable
 
     public void buttonClicked()
     {
-
     }
 
     private void MiniGameFinished()

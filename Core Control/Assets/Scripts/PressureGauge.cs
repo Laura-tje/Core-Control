@@ -41,6 +41,7 @@ public class PressureGauge : MonoBehaviour
         FingerprintGame = 4,
         ButtonGame = 5,
         RadarGame = 6,
+        ResonanceGame = 7,
     }
 
     private void Awake()

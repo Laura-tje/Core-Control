@@ -16,6 +16,7 @@ public class PressureGauge : MonoBehaviour
 
     // aantal actieve problemen, hoe hoger hoe sneller de timer loopt
     public int timeIncrease = 0;
+    public int fixTimerAdd = 2;
 
     public GameObject[] features; // put the switches and stuff in here
 
@@ -89,7 +90,7 @@ public class PressureGauge : MonoBehaviour
         timeIncrease = CheckForAmountProblems();
 
         if (timeIncrease <= 0)
-            timer -= Time.deltaTime;
+            timer -= Time.deltaTime * fixTimerAdd;
         else
             timer += timeIncrease * Time.deltaTime;
 
